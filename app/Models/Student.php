@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Panel;
+use Filament\Models\Contracts\FilamentUser;
 
-class Student extends Authenticatable
+class Student extends Authenticatable implements FilamentUser
 {
     use Notifiable, SoftDeletes;
     protected $guarded =   [];
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
