@@ -27,8 +27,7 @@ class StudentPanelProvider extends PanelProvider
     {
         return $panel
             ->id('student')
-            ->path('exam')
-            ->viteTheme('resources/css/filament/student/theme.css')
+            ->path('exam')            
             ->authGuard('student')
             ->login(StudentLogin::class)
             ->profile(StudentProfile::class, isSimple: false)
@@ -58,6 +57,7 @@ class StudentPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->viteTheme('resources/css/filament/student/theme.css');
     }
 }
