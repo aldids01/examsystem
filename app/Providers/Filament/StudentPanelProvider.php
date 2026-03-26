@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Student\Pages\Auth\StudentLogin;
+use App\Filament\Student\Pages\Auth\StudentProfile;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -25,7 +27,11 @@ class StudentPanelProvider extends PanelProvider
     {
         return $panel
             ->id('student')
-            ->path('student')
+            ->path('exam')
+            ->viteTheme('resources/css/filament/student/theme.css')
+            ->authGuard('student')
+            ->login(StudentLogin::class)
+            ->profile(StudentProfile::class, isSimple: false)
             ->colors([
                 'primary' => Color::Amber,
             ])
