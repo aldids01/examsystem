@@ -2,7 +2,6 @@
 @import '../../../../vendor/guava/calendar/resources/css/theme.css';
 @import '../../app.css';
 
-@source '../../../../app/Filament/Student/**/*';
-@source '../../../../resources/views/**/*';
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
 @source '../../../../vendor/guava/calendar/resources/**/*';
-

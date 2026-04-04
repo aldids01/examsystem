@@ -76,7 +76,7 @@ class ExamResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ])->whereHas('course', function (Builder $query) {
-                $query->where('department_id', auth('student')->user()->department_id);;
+                $query->where('department_id', auth('student')->user()->department_id);
             });
     }
 }

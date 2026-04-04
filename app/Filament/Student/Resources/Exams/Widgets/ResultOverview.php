@@ -8,9 +8,9 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class ResultOverview extends StatsOverviewWidget
 {
-    public static function calculateGPA($studentId, $semesterId)
+    public static function calculateGPA($studentId, $semesterId): float|int
     {
-        $results = AttemptExam::where('student_id', $studentId)
+        $results = AttemptExam::query()->where('student_id', $studentId)
             ->where('semester_id', $semesterId)
             ->get();
 
@@ -25,9 +25,9 @@ class ResultOverview extends StatsOverviewWidget
         return round($totalCP / $totalCU, 2);
     }
 
-    public static function calculateCGPA($studentId)
+    public static function calculateCGPA($studentId): float|int
     {
-        $results = AttemptExam::where('student_id', $studentId)->get();
+        $results = AttemptExam::query()->where('student_id', $studentId)->get();
 
         $totalCU = $results->sum('credit_unit');
 
@@ -48,7 +48,7 @@ class ResultOverview extends StatsOverviewWidget
             ->get();
     }
 
-    public static function degreeClass($cgpa)
+    public static function degreeClass($cgpa): string
     {
         if ($cgpa >= 4.50) {
             return "First Class";

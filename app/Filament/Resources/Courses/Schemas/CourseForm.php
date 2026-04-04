@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Courses\Schemas;
 
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -69,6 +71,12 @@ class CourseForm
                                         ->suffix('Minutes')
                                         ->numeric()
                                         ->required(),
+                                    DateTimePicker::make('created_at')
+                                        ->closeOnDateSelection()
+                                        ->label('Stat date/time'),
+                                    DateTimePicker::make('updated_at')
+                                        ->closeOnDateSelection()
+                                        ->label('End date/time'),
                                     Repeater::make('question')
                                         ->hiddenLabel()
                                         ->collapsed()
