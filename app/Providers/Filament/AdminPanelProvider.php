@@ -5,6 +5,9 @@ namespace App\Providers\Filament;
 use App\Filament\Resources\Courses\Widgets\ExamTimeTable;
 use App\Filament\Resources\Courses\Widgets\Statistics;
 use App\Filament\Widgets\StatOverview;
+use Caresome\FilamentAuthDesigner\AuthDesignerPlugin;
+use Caresome\FilamentAuthDesigner\Data\AuthPageConfig;
+use Caresome\FilamentAuthDesigner\Enums\MediaPosition;
 use Filament\Enums\UserMenuPosition;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -59,6 +62,19 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+            ])
+            ->plugins([
+                AuthDesignerPlugin::make()
+                    ->themeToggle()
+                    ->login()
+                    ->registration()
+                    ->passwordReset()
+                    ->emailVerification()
+                    ->defaults(fn (AuthPageConfig $config) => $config
+                        ->media(asset('school.jpg'))
+                        ->mediaPosition(MediaPosition::Left)
+                        ->mediaSize('60%')
+                    ),
             ])
             ->authMiddleware([
                 Authenticate::class,
