@@ -72,7 +72,7 @@ class StudentPanelProvider extends PanelProvider
                 AuthDesignerPlugin::make()
                     ->themeToggle()
                     ->login()
-                    ->registration()
+//                    ->registration()
                     ->passwordReset()
                     ->emailVerification()
                     ->defaults(fn (AuthPageConfig $config) => $config
